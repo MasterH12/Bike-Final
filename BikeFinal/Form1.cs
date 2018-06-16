@@ -62,10 +62,10 @@ namespace BikeFinal
         {
             int a = (Int32.Parse(iDTextBox.Text));
             this.arriendosTableAdapter.AGREGAR_ARR(a);
-            this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false,a);
+            this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false, a);
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
-           
-            
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -186,7 +186,7 @@ namespace BikeFinal
             {
                 panel3.Visible = false;
             }
-            }
+        }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -204,8 +204,6 @@ namespace BikeFinal
                 while (reader.Read())
                 {
                     iDTextBox1.Text = reader["ID"].ToString();
-                    
-
                 }
                 connection.Close();
             }
@@ -221,28 +219,28 @@ namespace BikeFinal
             int b = Int32.Parse(iDTextBox1.Text);
             this.bicicletasTableAdapter.INICIAR_ARRIENDO(true, b);
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
-            panel3.Visible=false;
+            panel3.Visible = false;
             string HORAs = hoy.ToShortTimeString();
-            char[] HORAc= new char[HORAs.Length];
+            char[] HORAc = new char[HORAs.Length];
             string hora = (HORAc[0].ToString()) + (HORAc[1].ToString());
-            string minutos= (HORAc[3].ToString()) + (HORAc[4].ToString());
+            string minutos = (HORAc[3].ToString()) + (HORAc[4].ToString());
             int h = Int32.Parse(hora);
             int m = Int32.Parse(minutos);
-            this.arriendosTableAdapter.INICIAR_ARR(h,m,b);
+            this.arriendosTableAdapter.INICIAR_ARR(h, m, b);
 
 
 
         }
 
-        private void bicicletasDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void BicicletasDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            iDTextBox.Text = "Funciona?";
+            panel4.Visible = true;
             DataGridViewRow fila = bicicletasDataGridView.Rows[e.RowIndex];
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
-            panel4.Visible = true;
             IDmod.Text = fila.Cells[0].Value.ToString();
-
 
         }
     }

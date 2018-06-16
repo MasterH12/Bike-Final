@@ -1,4 +1,7 @@
-﻿namespace BikeFinal
+﻿using System;
+using System.Windows.Forms;
+
+namespace BikeFinal
 {
     partial class Form1
     {
@@ -47,7 +50,7 @@
             System.Windows.Forms.Label label8;
             System.Windows.Forms.Label label9;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bicicletasBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bicicletasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -699,21 +702,22 @@
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewCheckBoxColumn2});
             this.bicicletasDataGridView.DataSource = this.bicicletasBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.bicicletasDataGridView.Enabled = false;
             this.bicicletasDataGridView.Location = new System.Drawing.Point(245, 71);
+            this.bicicletasDataGridView.MultiSelect = false;
             this.bicicletasDataGridView.Name = "bicicletasDataGridView";
             this.bicicletasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.bicicletasDataGridView.Size = new System.Drawing.Size(744, 223);
             this.bicicletasDataGridView.TabIndex = 8;
-            this.bicicletasDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bicicletasDataGridView_CellContentClick);
+            this.bicicletasDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bicicletasDataGridView_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -879,6 +883,11 @@
 
         }
 
+        private void bicicletasDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private DBDataSet dBDataSet;
@@ -924,7 +933,6 @@
         private DBDataSetTableAdapters.ArriendosTableAdapter arriendosTableAdapter;
         private System.Windows.Forms.TextBox iDTextBox1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridView bicicletasDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -941,6 +949,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox IDmod;
+        public DataGridView bicicletasDataGridView;
     }
 }
 
