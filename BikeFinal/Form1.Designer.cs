@@ -40,9 +40,14 @@
             System.Windows.Forms.Label tALLALabel1;
             System.Windows.Forms.Label vALORLabel1;
             System.Windows.Forms.Label iDLabel1;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label label8;
+            System.Windows.Forms.Label label9;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Label label3;
             this.bicicletasBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bicicletasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -81,9 +86,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.arriendosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button7 = new System.Windows.Forms.Button();
             this.iDTextBox1 = new System.Windows.Forms.TextBox();
-            this.arriendosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.arriendosTableAdapter = new BikeFinal.DBDataSetTableAdapters.ArriendosTableAdapter();
             this.bicicletasDataGridView = new System.Windows.Forms.DataGridView();
@@ -94,7 +100,14 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.IDmod = new System.Windows.Forms.TextBox();
             iDLabel = new System.Windows.Forms.Label();
             mARCALabel = new System.Windows.Forms.Label();
             tALLALabel = new System.Windows.Forms.Label();
@@ -107,6 +120,11 @@
             vALORLabel1 = new System.Windows.Forms.Label();
             iDLabel1 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasBindingNavigator)).BeginInit();
             this.bicicletasBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasBindingSource)).BeginInit();
@@ -116,6 +134,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arriendosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasDataGridView)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // iDLabel
@@ -216,6 +235,60 @@
             iDLabel1.Size = new System.Drawing.Size(21, 13);
             iDLabel1.TabIndex = 1;
             iDLabel1.Text = "ID:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(28, 44);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(46, 13);
+            label3.TabIndex = 4;
+            label3.Text = "Usuario:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(4, 94);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(57, 13);
+            label4.TabIndex = 10;
+            label4.Text = "RODADO:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(4, 146);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(46, 13);
+            label6.TabIndex = 6;
+            label6.Text = "VALOR:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(4, 120);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(43, 13);
+            label7.TabIndex = 4;
+            label7.Text = "TALLA:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(4, 68);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(48, 13);
+            label8.TabIndex = 2;
+            label8.Text = "MARCA:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(4, 42);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(21, 13);
+            label9.TabIndex = 0;
+            label9.Text = "ID:";
             // 
             // bicicletasBindingNavigator
             // 
@@ -567,6 +640,20 @@
             this.panel3.TabIndex = 7;
             this.panel3.Visible = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.arriendosBindingSource, "ID", true));
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(31, 60);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(156, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // arriendosBindingSource
+            // 
+            this.arriendosBindingSource.DataMember = "Arriendos";
+            this.arriendosBindingSource.DataSource = this.dBDataSet;
+            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(55, 124);
@@ -585,11 +672,6 @@
             this.iDTextBox1.Name = "iDTextBox1";
             this.iDTextBox1.Size = new System.Drawing.Size(100, 20);
             this.iDTextBox1.TabIndex = 2;
-            // 
-            // arriendosBindingSource
-            // 
-            this.arriendosBindingSource.DataMember = "Arriendos";
-            this.arriendosBindingSource.DataSource = this.dBDataSet;
             // 
             // listBox1
             // 
@@ -628,8 +710,10 @@
             this.bicicletasDataGridView.Enabled = false;
             this.bicicletasDataGridView.Location = new System.Drawing.Point(245, 71);
             this.bicicletasDataGridView.Name = "bicicletasDataGridView";
+            this.bicicletasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.bicicletasDataGridView.Size = new System.Drawing.Size(744, 223);
             this.bicicletasDataGridView.TabIndex = 8;
+            this.bicicletasDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bicicletasDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -673,23 +757,88 @@
             this.dataGridViewCheckBoxColumn2.HeaderText = "EN_REPARACION";
             this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
             // 
-            // label3
+            // panel4
             // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(28, 44);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(46, 13);
-            label3.TabIndex = 4;
-            label3.Text = "Usuario:";
+            this.panel4.Controls.Add(label4);
+            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.button8);
+            this.panel4.Controls.Add(label6);
+            this.panel4.Controls.Add(this.textBox3);
+            this.panel4.Controls.Add(label7);
+            this.panel4.Controls.Add(this.textBox4);
+            this.panel4.Controls.Add(label8);
+            this.panel4.Controls.Add(this.textBox5);
+            this.panel4.Controls.Add(label9);
+            this.panel4.Controls.Add(this.IDmod);
+            this.panel4.Location = new System.Drawing.Point(387, 150);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(387, 236);
+            this.panel4.TabIndex = 9;
+            this.panel4.Visible = false;
             // 
-            // textBox1
+            // textBox2
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.arriendosBindingSource, "ID", true));
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(31, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 20);
-            this.textBox1.TabIndex = 5;
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "RODADO", true));
+            this.textBox2.Location = new System.Drawing.Point(67, 91);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(74, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "INFORMACIÓN";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(43, 176);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(124, 23);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "AGREGAR";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "VALOR", true));
+            this.textBox3.Location = new System.Drawing.Point(67, 143);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 7;
+            // 
+            // textBox4
+            // 
+            this.textBox4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "TALLA", true));
+            this.textBox4.Location = new System.Drawing.Point(67, 117);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 5;
+            // 
+            // textBox5
+            // 
+            this.textBox5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.textBox5.Location = new System.Drawing.Point(67, 65);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 3;
+            // 
+            // IDmod
+            // 
+            this.IDmod.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "ID", true));
+            this.IDmod.Location = new System.Drawing.Point(67, 39);
+            this.IDmod.Name = "IDmod";
+            this.IDmod.ReadOnly = true;
+            this.IDmod.Size = new System.Drawing.Size(100, 20);
+            this.IDmod.TabIndex = 1;
             // 
             // Form1
             // 
@@ -698,6 +847,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(980, 467);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.bicicletasDataGridView);
             this.Controls.Add(this.button6);
@@ -722,6 +872,8 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arriendosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasDataGridView)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -781,6 +933,14 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox IDmod;
     }
 }
 
