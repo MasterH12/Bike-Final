@@ -60,10 +60,66 @@ Persist Security Info=False;";
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int a = (Int32.Parse(iDTextBox.Text));
-            this.arriendosTableAdapter.AGREGAR_ARR(a);
-            this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false,a);
-            this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+            try
+            {
+                if (mARCATextBox.Text == "")
+                {
+                    throw new ArgumentException("No se ha ingresado MARCA");
+                }
+                int id = (Int32.Parse(iDTextBox.Text));
+                int rod = Int32.Parse(rODADOTextBox.Text);
+                int tal = Int32.Parse(tALLATextBox.Text);
+                int val= Int32.Parse(vALORTextBox.Text);
+                this.arriendosTableAdapter.AGREGAR_ARR(id);
+                this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, rod,tal,val, false, false, id);
+                this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+            }
+            catch(Exception ex)
+            {
+                if (ex.Message=="La cadena de entrada no tiene el formato correcto.")
+                {
+                    MessageBox.Show("No se han ingresado correctamente los datos", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //Se procede a buscar la información que se ingresó erroneamente
+                    string[] frases = new string[4];
+                    string frase="";
+                    frases[0] = rODADOTextBox.Text;
+                    frases[1] = tALLATextBox.Text;
+                    frases[2] = vALORTextBox.Text;
+                    frases[3] = iDTextBox.Text;
+                    for (int j = 0; j < 4; j++)
+                    {
+                        frase = frases[j];
+                        for(int i = 0; i < frase.Length; i++)
+                        {
+                            if(frase[i]<48 || frase[i] > 57)
+                            {
+                                switch (j)
+                                {
+                                    case 0:
+                                        rODADOTextBox.Text = string.Concat("(*)", rODADOTextBox.Text);
+                                        break;
+                                    case 1:
+                                        tALLATextBox.Text = string.Concat("(*)", tALLATextBox.Text);
+                                        break;
+                                    case 2:
+                                        vALORTextBox.Text = string.Concat("(*)", vALORTextBox.Text);
+                                        break;
+                                    case 3:
+                                        iDTextBox.Text = string.Concat("(*)", iDTextBox.Text);
+                                        break;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                if(ex.Message== "No se ha ingresado MARCA")
+                {
+                    MessageBox.Show(ex.Message, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            
            
             
         }
