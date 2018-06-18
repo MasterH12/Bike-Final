@@ -42,7 +42,7 @@
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label label3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bicicletasBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bicicletasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -378,7 +378,7 @@
             this.panel1.Location = new System.Drawing.Point(12, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(206, 219);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 1;
             this.panel1.Visible = false;
             // 
             // rODADOTextBox
@@ -387,7 +387,7 @@
             this.rODADOTextBox.Location = new System.Drawing.Point(67, 91);
             this.rODADOTextBox.Name = "rODADOTextBox";
             this.rODADOTextBox.Size = new System.Drawing.Size(100, 20);
-            this.rODADOTextBox.TabIndex = 11;
+            this.rODADOTextBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -403,7 +403,7 @@
             this.button1.Location = new System.Drawing.Point(43, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 23);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 6;
             this.button1.Text = "AGREGAR";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -414,7 +414,7 @@
             this.vALORTextBox.Location = new System.Drawing.Point(67, 143);
             this.vALORTextBox.Name = "vALORTextBox";
             this.vALORTextBox.Size = new System.Drawing.Size(100, 20);
-            this.vALORTextBox.TabIndex = 7;
+            this.vALORTextBox.TabIndex = 5;
             // 
             // tALLATextBox
             // 
@@ -422,7 +422,7 @@
             this.tALLATextBox.Location = new System.Drawing.Point(67, 117);
             this.tALLATextBox.Name = "tALLATextBox";
             this.tALLATextBox.Size = new System.Drawing.Size(100, 20);
-            this.tALLATextBox.TabIndex = 5;
+            this.tALLATextBox.TabIndex = 4;
             // 
             // mARCATextBox
             // 
@@ -430,7 +430,7 @@
             this.mARCATextBox.Location = new System.Drawing.Point(67, 65);
             this.mARCATextBox.Name = "mARCATextBox";
             this.mARCATextBox.Size = new System.Drawing.Size(100, 20);
-            this.mARCATextBox.TabIndex = 3;
+            this.mARCATextBox.TabIndex = 2;
             // 
             // iDTextBox
             // 
@@ -636,14 +636,14 @@
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewCheckBoxColumn2});
             this.bicicletasDataGridView.DataSource = this.bicicletasBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle9;
             this.bicicletasDataGridView.Enabled = false;
             this.bicicletasDataGridView.Location = new System.Drawing.Point(245, 71);
             this.bicicletasDataGridView.Name = "bicicletasDataGridView";

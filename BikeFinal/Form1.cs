@@ -17,7 +17,8 @@ namespace BikeFinal
         OleDbConnection connection = new OleDbConnection();
         public Form1()
         {
-            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Paula\Desktop\BikeFinal\BikeFinal\BikeFinal\bin\Debug\DB.accdb;
+            //La siguiente linea de código tiene que ser modificada según la dirección del repositorio en el que estén (en cada computadora es diferente)
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\MasterH\source\repos\BikeControlFinal\BikeFinal\bin\Debug\DB.accdb;
 Persist Security Info=False;";
             InitializeComponent();
         }
@@ -66,12 +67,9 @@ Persist Security Info=False;";
                 {
                     throw new ArgumentException("No se ha ingresado MARCA");
                 }
-                int id = (Int32.Parse(iDTextBox.Text));
-                int rod = Int32.Parse(rODADOTextBox.Text);
-                int tal = Int32.Parse(tALLATextBox.Text);
-                int val= Int32.Parse(vALORTextBox.Text);
-                this.arriendosTableAdapter.AGREGAR_ARR(id);
-                this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, rod,tal,val, false, false, id);
+                int a = Int32.Parse(iDTextBox.Text);
+                this.arriendosTableAdapter.AGREGAR_ARR(a);
+                this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false, a);
                 this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
             }
             catch(Exception ex)
@@ -116,6 +114,10 @@ Persist Security Info=False;";
                 if(ex.Message== "No se ha ingresado MARCA")
                 {
                     MessageBox.Show(ex.Message, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
+                {
+                    MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
             }
@@ -285,8 +287,6 @@ Persist Security Info=False;";
             int h = Int32.Parse(hora);
             int m = Int32.Parse(minutos);
             this.arriendosTableAdapter.INICIAR_ARR(h,m,b);
-
-
 
         }
 }
