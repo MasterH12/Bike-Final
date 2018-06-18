@@ -4,6 +4,13 @@
 
     partial class DBDataSet
     {
+        partial class ArriendosDataTable
+        {
+        }
+
+        partial class BicicletasDataTable
+        {
+        }
     }
 }
 
