@@ -34,7 +34,7 @@ Persist Security Info=False;";
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dBDataSet.Arriendos' Puede moverla o quitarla según sea necesario.
-            this.arriendosTableAdapter.Fill(this.dBDataSet.Arriendos);
+            //this.arriendosTableAdapter.Fill(this.dBDataSet.Arriendos);
             // TODO: esta línea de código carga datos en la tabla 'dBDataSet.Bicicletas' Puede moverla o quitarla según sea necesario.
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
 
@@ -67,10 +67,15 @@ Persist Security Info=False;";
                 {
                     throw new ArgumentException("No se ha ingresado MARCA");
                 }
-                int a = Int32.Parse(iDTextBox.Text);
-                this.arriendosTableAdapter.AGREGAR_ARR(a);
-                this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false, a);
-                this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                else { 
+                    int a = Int32.Parse(iDTextBox.Text);
+
+                    //Agregar arriendos está clausurado por ahora para evitar problemas de base de datos
+                    //this.arriendosTableAdapter.AGREGAR_ARR(a);
+
+                    this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false, a);
+                    this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                }
             }
             catch(Exception ex)
             {
@@ -244,7 +249,7 @@ Persist Security Info=False;";
             {
                 panel3.Visible = false;
             }
-            }
+        }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -289,7 +294,25 @@ Persist Security Info=False;";
             this.arriendosTableAdapter.INICIAR_ARR(h,m,b);
 
         }
-}
+        //El evento siguiente controla lo que aparece en en el panel REPARACION
+        //Todavía no se actualiza el listado de bicicletas en la listbox
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (REPARACION.Visible == false)
+            {
+                listBox2.Items.Clear();
+                REPARACION.Visible = true;
+                panel3.Visible = false;
+                panel2.Visible = false;
+                panel1.Visible = false;
+            }
+            else
+            {
+                REPARACION.Visible = false;
+            }
+
+        }
+    }
 
        
     }

@@ -42,7 +42,12 @@
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label label3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label label8;
             this.bicicletasBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bicicletasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -95,6 +100,14 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.button8 = new System.Windows.Forms.Button();
+            this.REPARACION = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.ID_rep = new System.Windows.Forms.TextBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.MARCA_rep = new System.Windows.Forms.TextBox();
+            this.RODADO_rep = new System.Windows.Forms.TextBox();
+            this.TALLA_rep = new System.Windows.Forms.TextBox();
             iDLabel = new System.Windows.Forms.Label();
             mARCALabel = new System.Windows.Forms.Label();
             tALLALabel = new System.Windows.Forms.Label();
@@ -107,6 +120,11 @@
             vALORLabel1 = new System.Windows.Forms.Label();
             iDLabel1 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasBindingNavigator)).BeginInit();
             this.bicicletasBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasBindingSource)).BeginInit();
@@ -116,6 +134,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arriendosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasDataGridView)).BeginInit();
+            this.REPARACION.SuspendLayout();
             this.SuspendLayout();
             // 
             // iDLabel
@@ -253,7 +272,7 @@
             this.bicicletasBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bicicletasBindingNavigator.Name = "bicicletasBindingNavigator";
             this.bicicletasBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bicicletasBindingNavigator.Size = new System.Drawing.Size(980, 25);
+            this.bicicletasBindingNavigator.Size = new System.Drawing.Size(1001, 25);
             this.bicicletasBindingNavigator.TabIndex = 0;
             this.bicicletasBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -555,11 +574,11 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(387, 42);
+            this.button6.Location = new System.Drawing.Point(387, 43);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.Size = new System.Drawing.Size(81, 23);
             this.button6.TabIndex = 6;
-            this.button6.Text = "button6";
+            this.button6.Text = "ARRENDAR";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -636,14 +655,14 @@
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewCheckBoxColumn2});
             this.bicicletasDataGridView.DataSource = this.bicicletasBindingSource;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.bicicletasDataGridView.Enabled = false;
             this.bicicletasDataGridView.Location = new System.Drawing.Point(245, 71);
             this.bicicletasDataGridView.Name = "bicicletasDataGridView";
@@ -692,13 +711,144 @@
             this.dataGridViewCheckBoxColumn2.HeaderText = "EN_REPARACION";
             this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(474, 43);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(86, 23);
+            this.button8.TabIndex = 9;
+            this.button8.Text = "REPARACIÓN";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // REPARACION
+            // 
+            this.REPARACION.Controls.Add(label8);
+            this.REPARACION.Controls.Add(this.TALLA_rep);
+            this.REPARACION.Controls.Add(this.RODADO_rep);
+            this.REPARACION.Controls.Add(label7);
+            this.REPARACION.Controls.Add(label6);
+            this.REPARACION.Controls.Add(this.MARCA_rep);
+            this.REPARACION.Controls.Add(label4);
+            this.REPARACION.Controls.Add(this.button9);
+            this.REPARACION.Controls.Add(label5);
+            this.REPARACION.Controls.Add(this.ID_rep);
+            this.REPARACION.Controls.Add(this.listBox2);
+            this.REPARACION.Cursor = System.Windows.Forms.Cursors.Default;
+            this.REPARACION.Location = new System.Drawing.Point(346, 85);
+            this.REPARACION.Name = "REPARACION";
+            this.REPARACION.Size = new System.Drawing.Size(362, 262);
+            this.REPARACION.TabIndex = 10;
+            this.REPARACION.Visible = false;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(76, 158);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(91, 82);
+            this.button9.TabIndex = 3;
+            this.button9.Text = "CAMBIAR A ESTADO DE REPARACIÓN";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(49, 49);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(21, 13);
+            label5.TabIndex = 1;
+            label5.Text = "ID:";
+            // 
+            // ID_rep
+            // 
+            this.ID_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.arriendosBindingSource, "ID", true));
+            this.ID_rep.Enabled = false;
+            this.ID_rep.Location = new System.Drawing.Point(76, 46);
+            this.ID_rep.Name = "ID_rep";
+            this.ID_rep.Size = new System.Drawing.Size(92, 20);
+            this.ID_rep.TabIndex = 2;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(200, 41);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(132, 199);
+            this.listBox2.TabIndex = 0;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(22, 75);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(48, 13);
+            label4.TabIndex = 4;
+            label4.Text = "MARCA:";
+            // 
+            // MARCA_rep
+            // 
+            this.MARCA_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.MARCA_rep.Location = new System.Drawing.Point(76, 72);
+            this.MARCA_rep.Name = "MARCA_rep";
+            this.MARCA_rep.ReadOnly = true;
+            this.MARCA_rep.Size = new System.Drawing.Size(92, 20);
+            this.MARCA_rep.TabIndex = 5;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(13, 104);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(57, 13);
+            label6.TabIndex = 6;
+            label6.Text = "RODADO:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(27, 130);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(43, 13);
+            label7.TabIndex = 7;
+            label7.Text = "TALLA:";
+            // 
+            // RODADO_rep
+            // 
+            this.RODADO_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.RODADO_rep.Location = new System.Drawing.Point(76, 101);
+            this.RODADO_rep.Name = "RODADO_rep";
+            this.RODADO_rep.ReadOnly = true;
+            this.RODADO_rep.Size = new System.Drawing.Size(92, 20);
+            this.RODADO_rep.TabIndex = 8;
+            // 
+            // TALLA_rep
+            // 
+            this.TALLA_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.TALLA_rep.Location = new System.Drawing.Point(76, 127);
+            this.TALLA_rep.Name = "TALLA_rep";
+            this.TALLA_rep.ReadOnly = true;
+            this.TALLA_rep.Size = new System.Drawing.Size(92, 20);
+            this.TALLA_rep.TabIndex = 9;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            label8.Location = new System.Drawing.Point(137, 14);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(97, 17);
+            label8.TabIndex = 10;
+            label8.Text = "REPARACIÓN";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(980, 467);
+            this.ClientSize = new System.Drawing.Size(1001, 467);
+            this.Controls.Add(this.REPARACION);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.bicicletasDataGridView);
             this.Controls.Add(this.button6);
@@ -723,6 +873,8 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arriendosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasDataGridView)).EndInit();
+            this.REPARACION.ResumeLayout(false);
+            this.REPARACION.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -782,6 +934,14 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Panel REPARACION;
+        private System.Windows.Forms.TextBox TALLA_rep;
+        private System.Windows.Forms.TextBox RODADO_rep;
+        private System.Windows.Forms.TextBox MARCA_rep;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TextBox ID_rep;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }
 
