@@ -17,7 +17,7 @@ namespace BikeFinal
         OleDbConnection connection = new OleDbConnection();
         public Form1()
         {
-            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Paula\Desktop\BikeFinal\BikeFinal\BikeFinal\bin\Debug\DB.accdb;
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\felip\source\repos\Bike-Final\BikeFinal\bin\Debug\DB.accdb;
 Persist Security Info=False;";
             InitializeComponent();
         }
@@ -290,7 +290,12 @@ Persist Security Info=False;";
 
 
         }
-}
+
+        private void rODADOTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 
        
     }
