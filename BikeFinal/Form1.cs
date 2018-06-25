@@ -52,17 +52,22 @@ Persist Security Info=False;";
             {
                 panel1.Visible = false;
             }
-            mARCATextBox.Text = null;
-            rODADOTextBox.Text = null;
-            tALLATextBox.Text = null;
-            vALORTextBox.Text = null;
-            iDTextBox.Text = null;
+
+            mARCATextBox.Text = "";
+            rODADOTextBox.Text = "";
+            tALLATextBox.Text = "";
+            vALORTextBox.Text = "";
+            iDTextBox.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
+                rODADOTextBox.ForeColor = Color.Black;
+                tALLATextBox.ForeColor = Color.Black;
+                vALORTextBox.ForeColor = Color.Black;
+                iDTextBox.ForeColor = Color.Black;
                 if (mARCATextBox.Text == "")
                 {
                     throw new ArgumentException("No se ha ingresado MARCA");
@@ -75,54 +80,82 @@ Persist Security Info=False;";
 
                     this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false, a);
                     this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+
                 }
             }
             catch(Exception ex)
             {
-                if (ex.Message=="La cadena de entrada no tiene el formato correcto.")
+                if (ex.Message == "La cadena de entrada no tiene el formato correcto." || ex.Message == "No se ha ingresado MARCA")
                 {
-                    MessageBox.Show("No se han ingresado correctamente los datos", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //Se procede a buscar la información que se ingresó erroneamente
-                    string[] frases = new string[4];
-                    string frase="";
-                    frases[0] = rODADOTextBox.Text;
-                    frases[1] = tALLATextBox.Text;
-                    frases[2] = vALORTextBox.Text;
-                    frases[3] = iDTextBox.Text;
-                    for (int j = 0; j < 4; j++)
+                    string[] frases = new string[5];
+                    string frase = "";
+                    string mensaje = "Se han ingresado erróneamente los siguientes datos:";
+                    frases[0] = iDTextBox.Text;
+                    frases[1] = mARCATextBox.Text;
+                    frases[2] = rODADOTextBox.Text;
+                    frases[3] = tALLATextBox.Text;
+                    frases[4] = vALORTextBox.Text;
+                    Boolean error = false;
+                    for (int j = 0; j < frases.Length; j++)
                     {
+                        error = false;
                         frase = frases[j];
-                        for(int i = 0; i < frase.Length; i++)
+                        for (int i = 0; i < frase.Length; i++)
                         {
-                            if(frase[i]<48 || frase[i] > 57)
+                            //Se verifica si se no se ingresó algo en MARCA, y si los datos de ID, rodad, talla y valor hayan sido correctos (números)
+                            //Si se encuentra error, se saldrá del for con un break
+                            if (frase[i] < 48 || frase[i] > 57 && j!=1)
                             {
-                                switch (j)
-                                {
-                                    case 0:
-                                        rODADOTextBox.Text = string.Concat("(*)", rODADOTextBox.Text);
-                                        break;
-                                    case 1:
-                                        tALLATextBox.Text = string.Concat("(*)", tALLATextBox.Text);
-                                        break;
-                                    case 2:
-                                        vALORTextBox.Text = string.Concat("(*)", vALORTextBox.Text);
-                                        break;
-                                    case 3:
-                                        iDTextBox.Text = string.Concat("(*)", iDTextBox.Text);
-                                        break;
-                                }
+                                error = true;
                                 break;
                             }
                         }
+                        if (j == 1 && mARCATextBox.Text == "")
+                            error = true;
+                        if (error == true)
+                        {
+                            mensaje = string.Concat(mensaje, "\n");
+                            switch (j)
+                            {
+                                case 0:
+                                    iDTextBox.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-ID (Debe ser un número)");
+                                    break;
+                                case 1:
+                                    mensaje = string.Concat(mensaje, "\t-MARCA (No ha ingresado nada)");
+                                    break;
+                                case 2:
+                                    rODADOTextBox.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-RODADO (Debe ser un número)");
+                                    break;
+                                case 3:
+                                    tALLATextBox.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-TALLA (Debe ser un número)");
+                                    break;
+                                case 4:
+                                    vALORTextBox.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-VALOR (Debe ser un número)");
+                                    break;
+                            }
+                        }
                     }
+                    MessageBox.Show(mensaje, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if(ex.Message== "No se ha ingresado MARCA")
+                else
                 {
-                    MessageBox.Show(ex.Message, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
-                {
-                    MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex.Message == "No se ha ingresado MARCA")
+                    {
+                        MessageBox.Show(ex.Message, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
+                        {
+                            MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            iDTextBox.ForeColor = Color.Red;
+                        }
+                    }
                 }
                 
             }
@@ -138,7 +171,6 @@ Persist Security Info=False;";
                 comboBox1.Items.Clear();
                 try
                 {
-
                     connection.Open();
 
                     OleDbCommand command = new OleDbCommand();
@@ -175,8 +207,78 @@ Persist Security Info=False;";
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.bicicletasTableAdapter.MODIFICAR(mARCATextBox1.Text, Int32.Parse(rODADOTextBox1.Text), Int32.Parse(tALLATextBox1.Text), Int32.Parse(vALORTextBox1.Text), Int32.Parse(comboBox1.Text));
-            this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+            try
+            {
+                rODADOTextBox1.ForeColor = Color.Black;
+                tALLATextBox1.ForeColor = Color.Black;
+                vALORTextBox1.ForeColor = Color.Black;
+                iDTextBox1.ForeColor = Color.Black;
+                if (mARCATextBox1.Text == "")
+                {
+                    throw new ArgumentException("No se ha ingresado MARCA");
+                }
+                else
+                {
+                    this.bicicletasTableAdapter.MODIFICAR(mARCATextBox1.Text, Int32.Parse(rODADOTextBox1.Text), Int32.Parse(tALLATextBox1.Text), Int32.Parse(vALORTextBox1.Text), Int32.Parse(comboBox1.Text));
+                    this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                }
+            }
+            catch(Exception ex)
+            {
+                if (ex.Message == "La cadena de entrada no tiene el formato correcto." || ex.Message == "No se ha ingresado MARCA")
+                {
+                    //Se procede a buscar la información que se ingresó erroneamente
+                    string[] frases = new string[4];
+                    string frase = "";
+                    string mensaje = "Se han ingresado erróneamente los siguientes datos:";
+                    frases[0] = mARCATextBox1.Text;
+                    frases[1] = rODADOTextBox1.Text;
+                    frases[2] = tALLATextBox1.Text;
+                    frases[3] = vALORTextBox1.Text;
+                    Boolean error = false;
+                    for (int j = 0; j < frases.Length; j++)
+                    {
+                        error = false;
+                        frase = frases[j];
+                        for (int i = 0; i < frase.Length; i++)
+                        {
+                            //Se verifica si se no se ingresó algo en MARCA, y si los datos de ID, rodad, talla y valor hayan sido correctos (números)
+                            //Si se encuentra error, se saldrá del for con un break
+                            if (frase[i] < 48 || frase[i] > 57 && j!=0)
+                            {
+                                error = true;
+                                break;
+                            }
+                        }
+                        if (j == 0 && mARCATextBox1.Text == "")
+                            error = true;
+                        if (error == true)
+                        {
+                            mensaje = string.Concat(mensaje, "\n");
+                            switch (j)
+                            {
+                                case 0:
+                                    mARCATextBox1.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-MARCA (No se ha ingresado Marca)");
+                                    break;
+                                case 1:
+                                    rODADOTextBox1.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-RODADO (Debe ser un número)");
+                                    break;
+                                case 2:
+                                    tALLATextBox1.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-TALLA (Debe ser un número)");
+                                    break;
+                                case 3:
+                                    vALORTextBox1.ForeColor = Color.Red;
+                                    mensaje = string.Concat(mensaje, "\t-VALOR (Debe ser un número)");
+                                    break;
+                            }
+                        }
+                    }
+                    MessageBox.Show(mensaje, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -267,8 +369,6 @@ Persist Security Info=False;";
                 while (reader.Read())
                 {
                     iDTextBox1.Text = reader["ID"].ToString();
-                    
-
                 }
                 connection.Close();
             }

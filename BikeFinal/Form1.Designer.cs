@@ -41,13 +41,13 @@
             System.Windows.Forms.Label vALORLabel1;
             System.Windows.Forms.Label iDLabel1;
             System.Windows.Forms.Label label3;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label8;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bicicletasBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bicicletasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -102,12 +102,12 @@
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.button8 = new System.Windows.Forms.Button();
             this.REPARACION = new System.Windows.Forms.Panel();
+            this.TALLA_rep = new System.Windows.Forms.TextBox();
+            this.RODADO_rep = new System.Windows.Forms.TextBox();
+            this.MARCA_rep = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.ID_rep = new System.Windows.Forms.TextBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.MARCA_rep = new System.Windows.Forms.TextBox();
-            this.RODADO_rep = new System.Windows.Forms.TextBox();
-            this.TALLA_rep = new System.Windows.Forms.TextBox();
             iDLabel = new System.Windows.Forms.Label();
             mARCALabel = new System.Windows.Forms.Label();
             tALLALabel = new System.Windows.Forms.Label();
@@ -140,6 +140,7 @@
             // iDLabel
             // 
             iDLabel.AutoSize = true;
+            iDLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             iDLabel.Location = new System.Drawing.Point(4, 42);
             iDLabel.Name = "iDLabel";
             iDLabel.Size = new System.Drawing.Size(21, 13);
@@ -245,6 +246,52 @@
             label3.Size = new System.Drawing.Size(46, 13);
             label3.TabIndex = 4;
             label3.Text = "Usuario:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(49, 49);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(21, 13);
+            label5.TabIndex = 1;
+            label5.Text = "ID:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(22, 75);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(48, 13);
+            label4.TabIndex = 4;
+            label4.Text = "MARCA:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(13, 104);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(57, 13);
+            label6.TabIndex = 6;
+            label6.Text = "RODADO:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(27, 130);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(43, 13);
+            label7.TabIndex = 7;
+            label7.Text = "TALLA:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            label8.Location = new System.Drawing.Point(137, 14);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(97, 17);
+            label8.TabIndex = 10;
+            label8.Text = "REPARACIÓN";
             // 
             // bicicletasBindingNavigator
             // 
@@ -402,11 +449,13 @@
             // 
             // rODADOTextBox
             // 
+            this.rODADOTextBox.CausesValidation = false;
             this.rODADOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "RODADO", true));
             this.rODADOTextBox.Location = new System.Drawing.Point(67, 91);
             this.rODADOTextBox.Name = "rODADOTextBox";
             this.rODADOTextBox.Size = new System.Drawing.Size(100, 20);
             this.rODADOTextBox.TabIndex = 3;
+            this.rODADOTextBox.TabStop = false;
             // 
             // label1
             // 
@@ -429,35 +478,45 @@
             // 
             // vALORTextBox
             // 
+            this.vALORTextBox.CausesValidation = false;
             this.vALORTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "VALOR", true));
             this.vALORTextBox.Location = new System.Drawing.Point(67, 143);
             this.vALORTextBox.Name = "vALORTextBox";
             this.vALORTextBox.Size = new System.Drawing.Size(100, 20);
             this.vALORTextBox.TabIndex = 5;
+            this.vALORTextBox.TabStop = false;
             // 
             // tALLATextBox
             // 
+            this.tALLATextBox.CausesValidation = false;
             this.tALLATextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "TALLA", true));
             this.tALLATextBox.Location = new System.Drawing.Point(67, 117);
             this.tALLATextBox.Name = "tALLATextBox";
             this.tALLATextBox.Size = new System.Drawing.Size(100, 20);
             this.tALLATextBox.TabIndex = 4;
+            this.tALLATextBox.TabStop = false;
             // 
             // mARCATextBox
             // 
+            this.mARCATextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.mARCATextBox.CausesValidation = false;
             this.mARCATextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.mARCATextBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.mARCATextBox.Location = new System.Drawing.Point(67, 65);
             this.mARCATextBox.Name = "mARCATextBox";
             this.mARCATextBox.Size = new System.Drawing.Size(100, 20);
             this.mARCATextBox.TabIndex = 2;
+            this.mARCATextBox.TabStop = false;
             // 
             // iDTextBox
             // 
+            this.iDTextBox.CausesValidation = false;
             this.iDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "ID", true));
             this.iDTextBox.Location = new System.Drawing.Point(67, 39);
             this.iDTextBox.Name = "iDTextBox";
             this.iDTextBox.Size = new System.Drawing.Size(100, 20);
             this.iDTextBox.TabIndex = 1;
+            this.iDTextBox.TabStop = false;
             // 
             // button2
             // 
@@ -655,14 +714,14 @@
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewCheckBoxColumn2});
             this.bicicletasDataGridView.DataSource = this.bicicletasBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.bicicletasDataGridView.Enabled = false;
             this.bicicletasDataGridView.Location = new System.Drawing.Point(245, 71);
             this.bicicletasDataGridView.Name = "bicicletasDataGridView";
@@ -741,6 +800,33 @@
             this.REPARACION.TabIndex = 10;
             this.REPARACION.Visible = false;
             // 
+            // TALLA_rep
+            // 
+            this.TALLA_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.TALLA_rep.Location = new System.Drawing.Point(76, 127);
+            this.TALLA_rep.Name = "TALLA_rep";
+            this.TALLA_rep.ReadOnly = true;
+            this.TALLA_rep.Size = new System.Drawing.Size(92, 20);
+            this.TALLA_rep.TabIndex = 9;
+            // 
+            // RODADO_rep
+            // 
+            this.RODADO_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.RODADO_rep.Location = new System.Drawing.Point(76, 101);
+            this.RODADO_rep.Name = "RODADO_rep";
+            this.RODADO_rep.ReadOnly = true;
+            this.RODADO_rep.Size = new System.Drawing.Size(92, 20);
+            this.RODADO_rep.TabIndex = 8;
+            // 
+            // MARCA_rep
+            // 
+            this.MARCA_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
+            this.MARCA_rep.Location = new System.Drawing.Point(76, 72);
+            this.MARCA_rep.Name = "MARCA_rep";
+            this.MARCA_rep.ReadOnly = true;
+            this.MARCA_rep.Size = new System.Drawing.Size(92, 20);
+            this.MARCA_rep.TabIndex = 5;
+            // 
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(76, 158);
@@ -749,15 +835,6 @@
             this.button9.TabIndex = 3;
             this.button9.Text = "CAMBIAR A ESTADO DE REPARACIÓN";
             this.button9.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(49, 49);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(21, 13);
-            label5.TabIndex = 1;
-            label5.Text = "ID:";
             // 
             // ID_rep
             // 
@@ -775,70 +852,6 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(132, 199);
             this.listBox2.TabIndex = 0;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(22, 75);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(48, 13);
-            label4.TabIndex = 4;
-            label4.Text = "MARCA:";
-            // 
-            // MARCA_rep
-            // 
-            this.MARCA_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
-            this.MARCA_rep.Location = new System.Drawing.Point(76, 72);
-            this.MARCA_rep.Name = "MARCA_rep";
-            this.MARCA_rep.ReadOnly = true;
-            this.MARCA_rep.Size = new System.Drawing.Size(92, 20);
-            this.MARCA_rep.TabIndex = 5;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(13, 104);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(57, 13);
-            label6.TabIndex = 6;
-            label6.Text = "RODADO:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(27, 130);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(43, 13);
-            label7.TabIndex = 7;
-            label7.Text = "TALLA:";
-            // 
-            // RODADO_rep
-            // 
-            this.RODADO_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
-            this.RODADO_rep.Location = new System.Drawing.Point(76, 101);
-            this.RODADO_rep.Name = "RODADO_rep";
-            this.RODADO_rep.ReadOnly = true;
-            this.RODADO_rep.Size = new System.Drawing.Size(92, 20);
-            this.RODADO_rep.TabIndex = 8;
-            // 
-            // TALLA_rep
-            // 
-            this.TALLA_rep.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bicicletasBindingSource, "MARCA", true));
-            this.TALLA_rep.Location = new System.Drawing.Point(76, 127);
-            this.TALLA_rep.Name = "TALLA_rep";
-            this.TALLA_rep.ReadOnly = true;
-            this.TALLA_rep.Size = new System.Drawing.Size(92, 20);
-            this.TALLA_rep.TabIndex = 9;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            label8.Location = new System.Drawing.Point(137, 14);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(97, 17);
-            label8.TabIndex = 10;
-            label8.Text = "REPARACIÓN";
             // 
             // Form1
             // 
