@@ -47,6 +47,7 @@ Persist Security Info=False;";
                 panel1.Visible = true;
                 panel2.Visible = false;
                 panel3.Visible = false;
+                REPARACION.Visible = false;
             }
             else
             {
@@ -193,6 +194,7 @@ Persist Security Info=False;";
                 panel2.Visible = true;
                 panel1.Visible = false;
                 panel3.Visible = false;
+                REPARACION.Visible = false;
             }
             else
             {
@@ -312,8 +314,12 @@ Persist Security Info=False;";
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.bicicletasTableAdapter.ELIMINAR(Int32.Parse(comboBox1.Text));
-            this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+            DialogResult respuesta=MessageBox.Show("Está seguro de que desea eliminar", "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (respuesta == DialogResult.Yes)
+            {
+                this.bicicletasTableAdapter.ELIMINAR(Int32.Parse(comboBox1.Text));
+                this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -346,6 +352,7 @@ Persist Security Info=False;";
                 panel3.Visible = true;
                 panel2.Visible = false;
                 panel1.Visible = false;
+                REPARACION.Visible = false;
             }
             else
             {
