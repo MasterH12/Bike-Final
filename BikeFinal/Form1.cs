@@ -74,7 +74,8 @@ Persist Security Info=False;";
                 }
                 else { 
                     int a = Int32.Parse(iDTextBox.Text);
-
+                    int x;
+                    //x no sirve de nada
                     //Agregar arriendos está clausurado por ahora para evitar problemas de base de datos
                     //this.arriendosTableAdapter.AGREGAR_ARR(a);
 
