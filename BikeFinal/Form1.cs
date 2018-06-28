@@ -85,12 +85,19 @@ Persist Security Info=False;";
             }
             catch(Exception ex)
             {
-                if (ex.Message == "La cadena de entrada no tiene el formato correcto." || ex.Message == "No se ha ingresado MARCA")
+
+                if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
+                {
+                    MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    iDTextBox.ForeColor = Color.Red;
+                }
+                else
                 {
                     //Se procede a buscar la información que se ingresó erroneamente
                     string[] frases = new string[5];
                     string frase = "";
                     string mensaje = "Se han ingresado erróneamente los siguientes datos:";
+                    string causa = "";
                     frases[0] = iDTextBox.Text;
                     frases[1] = mARCATextBox.Text;
                     frases[2] = rODADOTextBox.Text;
@@ -101,18 +108,24 @@ Persist Security Info=False;";
                     {
                         error = false;
                         frase = frases[j];
-                        for (int i = 0; i < frase.Length; i++)
+                        if (frase == "")
                         {
-                            //Se verifica si se no se ingresó algo en MARCA, y si los datos de ID, rodad, talla y valor hayan sido correctos (números)
-                            //Si se encuentra error, se saldrá del for con un break
-                            if (frase[i] < 48 || frase[i] > 57 && j!=1)
+                            causa = "nada";
+                            error = true;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < frase.Length; i++)
                             {
-                                error = true;
-                                break;
+                                //Se verifica si se no se ingresó algo en MARCA, y si los datos de ID, rodad, talla y valor hayan sido correctos (números)
+                                //Si se encuentra error, se saldrá del for con un break
+                                if (frase[i] < 48 || frase[i] > 57 && j!=1)
+                                {
+                                    error = true;
+                                    break;
+                                }
                             }
                         }
-                        if (j == 1 && mARCATextBox.Text == "")
-                            error = true;
                         if (error == true)
                         {
                             mensaje = string.Concat(mensaje, "\n");
@@ -120,42 +133,59 @@ Persist Security Info=False;";
                             {
                                 case 0:
                                     iDTextBox.ForeColor = Color.Red;
-                                    mensaje = string.Concat(mensaje, "\t-ID (Debe ser un número)");
+                                    mensaje = string.Concat(mensaje, "\t-ID ");
+                                    if (causa == "nada")
+                                    {
+                                        mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
+                                    }
+                                    else
+                                    {
+                                        mensaje = string.Concat(mensaje, "(Debe ser un número)");
+                                    }
                                     break;
                                 case 1:
                                     mensaje = string.Concat(mensaje, "\t-MARCA (No ha ingresado nada)");
                                     break;
                                 case 2:
                                     rODADOTextBox.ForeColor = Color.Red;
-                                    mensaje = string.Concat(mensaje, "\t-RODADO (Debe ser un número)");
+                                    mensaje = string.Concat(mensaje, "\t-RODADO ");
+                                    if (causa == "nada")
+                                    {
+                                        mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
+                                    }
+                                    else
+                                    {
+                                        mensaje = string.Concat(mensaje, "(Debe ser un número)");
+                                    }
                                     break;
                                 case 3:
                                     tALLATextBox.ForeColor = Color.Red;
-                                    mensaje = string.Concat(mensaje, "\t-TALLA (Debe ser un número)");
+                                    mensaje = string.Concat(mensaje, "\t-TALLA ");
+                                    if (causa == "nada")
+                                    {
+                                        mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
+                                    }
+                                    else
+                                    {
+                                        mensaje = string.Concat(mensaje, "(Debe ser un número)");
+                                    }
                                     break;
                                 case 4:
                                     vALORTextBox.ForeColor = Color.Red;
-                                    mensaje = string.Concat(mensaje, "\t-VALOR (Debe ser un número)");
+                                    mensaje = string.Concat(mensaje, "\t-VALOR ");
+                                    if (causa == "nada")
+                                    {
+                                        mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
+                                    }
+                                    else
+                                    {
+                                        mensaje = string.Concat(mensaje, "(Debe ser un número)");
+                                    }
                                     break;
                             }
                         }
                     }
                     MessageBox.Show(mensaje, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    if (ex.Message == "No se ha ingresado MARCA")
-                    {
-                        MessageBox.Show(ex.Message, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
-                        {
-                            MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            iDTextBox.ForeColor = Color.Red;
-                        }
-                    }
                 }
                 
             }
@@ -232,6 +262,7 @@ Persist Security Info=False;";
                     string[] frases = new string[4];
                     string frase = "";
                     string mensaje = "Se han ingresado erróneamente los siguientes datos:";
+                    string causa = "";
                     frases[0] = mARCATextBox1.Text;
                     frases[1] = rODADOTextBox1.Text;
                     frases[2] = tALLATextBox1.Text;
@@ -241,18 +272,21 @@ Persist Security Info=False;";
                     {
                         error = false;
                         frase = frases[j];
+                        if (frase == "")
+                        {
+                            causa = "nada";
+                            error = true;
+                        }
                         for (int i = 0; i < frase.Length; i++)
                         {
                             //Se verifica si se no se ingresó algo en MARCA, y si los datos de ID, rodad, talla y valor hayan sido correctos (números)
                             //Si se encuentra error, se saldrá del for con un break
-                            if (frase[i] < 48 || frase[i] > 57 && j!=0)
+                            if (frase[i] < 48 || frase[i] > 57 && j!=1)
                             {
                                 error = true;
                                 break;
                             }
                         }
-                        if (j == 0 && mARCATextBox1.Text == "")
-                            error = true;
                         if (error == true)
                         {
                             mensaje = string.Concat(mensaje, "\n");
@@ -264,15 +298,39 @@ Persist Security Info=False;";
                                     break;
                                 case 1:
                                     rODADOTextBox1.ForeColor = Color.Red;
-                                    mensaje = string.Concat(mensaje, "\t-RODADO (Debe ser un número)");
+                                    mensaje = string.Concat(mensaje, "\t-RODADO ");
+                                    if (causa == "nada")
+                                    {
+                                        mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
+                                    }
+                                    else
+                                    {
+                                        mensaje = string.Concat(mensaje, "(Debe ser un número)");
+                                    }
                                     break;
                                 case 2:
                                     tALLATextBox1.ForeColor = Color.Red;
-                                    mensaje = string.Concat(mensaje, "\t-TALLA (Debe ser un número)");
+                                    mensaje = string.Concat(mensaje, "\t-TALLA ");
+                                    if (causa == "nada")
+                                    {
+                                        mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
+                                    }
+                                    else
+                                    {
+                                        mensaje = string.Concat(mensaje, "(Debe ser un número)");
+                                    }
                                     break;
                                 case 3:
                                     vALORTextBox1.ForeColor = Color.Red;
-                                    mensaje = string.Concat(mensaje, "\t-VALOR (Debe ser un número)");
+                                    mensaje = string.Concat(mensaje, "\t-VALOR ");
+                                    if (causa == "nada")
+                                    {
+                                        mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
+                                    }
+                                    else
+                                    {
+                                        mensaje = string.Concat(mensaje, "(Debe ser un número)");
+                                    }
                                     break;
                             }
                         }
