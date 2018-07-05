@@ -73,7 +73,8 @@ Persist Security Info=False;";
                 {
                     throw new ArgumentException("No se ha ingresado MARCA");
                 }
-                else { 
+                else
+                {
                     int a = Int32.Parse(iDTextBox.Text);
                     //Agregar arriendos está clausurado por ahora para evitar problemas de base de datos
                     //this.arriendosTableAdapter.AGREGAR_ARR(a);
@@ -83,9 +84,8 @@ Persist Security Info=False;";
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
                 if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
                 {
                     MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -119,7 +119,7 @@ Persist Security Info=False;";
                             {
                                 //Se verifica si se no se ingresó algo en MARCA, y si los datos de ID, rodad, talla y valor hayan sido correctos (números)
                                 //Si se encuentra error, se saldrá del for con un break
-                                if (frase[i] < 48 || frase[i] > 57 && j!=1)
+                                if (frase[i] < 48 || frase[i] > 57 && j != 1)
                                 {
                                     error = true;
                                     break;
@@ -187,11 +187,11 @@ Persist Security Info=False;";
                     }
                     MessageBox.Show(mensaje, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
-            
-           
-            
+
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -254,7 +254,7 @@ Persist Security Info=False;";
                     this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (ex.Message == "La cadena de entrada no tiene el formato correcto." || ex.Message == "No se ha ingresado MARCA")
                 {
@@ -281,7 +281,7 @@ Persist Security Info=False;";
                         {
                             //Se verifica si se no se ingresó algo en MARCA, y si los datos de ID, rodad, talla y valor hayan sido correctos (números)
                             //Si se encuentra error, se saldrá del for con un break
-                            if (frase[i] < 48 || frase[i] > 57 && j!=1)
+                            if (frase[i] < 48 || frase[i] > 57 && j != 1)
                             {
                                 error = true;
                                 break;
@@ -371,7 +371,7 @@ Persist Security Info=False;";
 
         private void button5_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta=MessageBox.Show("Está seguro de que desea eliminar", "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            DialogResult respuesta = MessageBox.Show("Está seguro de que desea eliminar", "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (respuesta == DialogResult.Yes)
             {
                 this.bicicletasTableAdapter.ELIMINAR(Int32.Parse(comboBox1.Text));
@@ -448,14 +448,14 @@ Persist Security Info=False;";
             int b = Int32.Parse(iDTextBox1.Text);
             this.bicicletasTableAdapter.INICIAR_ARRIENDO(true, b);
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
-            panel3.Visible=false;
+            panel3.Visible = false;
             string HORAs = hoy.ToShortTimeString();
-            char[] HORAc= new char[HORAs.Length];
+            char[] HORAc = new char[HORAs.Length];
             string hora = (HORAc[0].ToString()) + (HORAc[1].ToString());
-            string minutos= (HORAc[3].ToString()) + (HORAc[4].ToString());
+            string minutos = (HORAc[3].ToString()) + (HORAc[4].ToString());
             int h = Int32.Parse(hora);
             int m = Int32.Parse(minutos);
-            this.arriendosTableAdapter.INICIAR_ARR(h,m,b);
+            this.arriendosTableAdapter.INICIAR_ARR(h, m, b);
 
         }
         //El evento siguiente controla lo que aparece en en el panel REPARACION
@@ -476,8 +476,12 @@ Persist Security Info=False;";
             }
 
         }
+        //Intentado checkear estados
+        //private void bicicletasDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    DataGridViewRow row = bicicletasDataGridView(e.RowIndex);
+        //}
     }
 
-       
-    }
+}
 

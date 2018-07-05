@@ -564,6 +564,7 @@
             // 
             // bicicletasDataGridView
             // 
+            this.bicicletasDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
             this.bicicletasDataGridView.AutoGenerateColumns = false;
             this.bicicletasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bicicletasDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -588,6 +589,7 @@
             this.bicicletasDataGridView.Name = "bicicletasDataGridView";
             this.bicicletasDataGridView.Size = new System.Drawing.Size(744, 223);
             this.bicicletasDataGridView.TabIndex = 8;
+            this.bicicletasDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bicicletasDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
