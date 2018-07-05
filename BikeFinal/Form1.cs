@@ -476,6 +476,7 @@ Persist Security Info=False;";
             }
 
         }
+        //Cambios de Estado de reparación para las bicicletas
         private void bicicletasDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)

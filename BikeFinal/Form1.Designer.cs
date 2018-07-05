@@ -565,6 +565,9 @@
             // bicicletasDataGridView
             // 
             this.bicicletasDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
+            this.bicicletasDataGridView.AllowUserToAddRows = false;
+            this.bicicletasDataGridView.AllowUserToDeleteRows = false;
+            this.bicicletasDataGridView.AllowUserToResizeRows = false;
             this.bicicletasDataGridView.AutoGenerateColumns = false;
             this.bicicletasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bicicletasDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
