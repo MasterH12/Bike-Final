@@ -584,9 +584,9 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.bicicletasDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.bicicletasDataGridView.Enabled = false;
             this.bicicletasDataGridView.Location = new System.Drawing.Point(245, 71);
             this.bicicletasDataGridView.Name = "bicicletasDataGridView";
+            this.bicicletasDataGridView.ReadOnly = true;
             this.bicicletasDataGridView.Size = new System.Drawing.Size(744, 223);
             this.bicicletasDataGridView.TabIndex = 8;
             this.bicicletasDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bicicletasDataGridView_CellContentClick);
@@ -596,42 +596,49 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
             this.dataGridViewTextBoxColumn1.HeaderText = "ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "MARCA";
             this.dataGridViewTextBoxColumn2.HeaderText = "MARCA";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "RODADO";
             this.dataGridViewTextBoxColumn3.HeaderText = "RODADO";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "TALLA";
             this.dataGridViewTextBoxColumn4.HeaderText = "TALLA";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "VALOR";
             this.dataGridViewTextBoxColumn5.HeaderText = "VALOR";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewCheckBoxColumn1
             // 
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "EN_ARRIENDO";
             this.dataGridViewCheckBoxColumn1.HeaderText = "EN_ARRIENDO";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewCheckBoxColumn2
             // 
             this.dataGridViewCheckBoxColumn2.DataPropertyName = "EN_REPARACION";
             this.dataGridViewCheckBoxColumn2.HeaderText = "EN_REPARACION";
             this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
             // 
             // button8
             // 
@@ -641,6 +648,7 @@
             this.button8.TabIndex = 9;
             this.button8.Text = "REPARACIÓN";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Visible = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // REPARACION

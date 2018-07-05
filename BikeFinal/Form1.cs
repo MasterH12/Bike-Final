@@ -476,11 +476,43 @@ Persist Security Info=False;";
             }
 
         }
-        //Intentado checkear estados
-        //private void bicicletasDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    DataGridViewRow row = bicicletasDataGridView(e.RowIndex);
-        //}
+        private void bicicletasDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            if (bicicletasDataGridView.Columns[e.ColumnIndex].Name == "dataGridViewCheckBoxColumn2")
+            {
+                DataGridViewRow row = bicicletasDataGridView.Rows[e.RowIndex];
+                DataGridViewCheckBoxCell cell = row.Cells["dataGridViewCheckBoxColumn2"] as DataGridViewCheckBoxCell;
+                if (Convert.ToBoolean(cell.Value) == false)
+                {
+                    
+                    DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea marcar en Reparación?", "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        cell.Value = true;
+                    }
+                    else
+                    {
+                        cell.Value = false;
+                    }
+                }
+                else
+                {
+                    DialogResult respuesta = MessageBox.Show("¿Ha sido reparada esta bicicleta?", "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        cell.Value = false;
+                    }
+                    else
+                    {
+                        cell.Value = true;
+                    }
+                }
+
+            }
+
+        }
     }
 
 }
