@@ -18,7 +18,7 @@ namespace BikeFinal
         public Form1()
         {
             //La siguiente linea de código tiene que ser modificada según la dirección del repositorio en el que estén (en cada computadora es diferente)
-            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\MasterH\source\repos\BikeControlFinal\BikeFinal\bin\Debug\DB.accdb;
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Nicolas Windows 7\source\repos\Bike-Final\BikeFinal\bin\Debug\DB.accdb;
 Persist Security Info=False;";
             InitializeComponent();
         }
@@ -77,7 +77,7 @@ Persist Security Info=False;";
                 {
                     int a = Int32.Parse(iDTextBox.Text);
                     //Agregar arriendos está clausurado por ahora para evitar problemas de base de datos
-                    //this.arriendosTableAdapter.AGREGAR_ARR(a);
+                    this.arriendosTableAdapter.AGREGAR_ARR(a);
 
                     this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false, a);
                     this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
@@ -450,9 +450,19 @@ Persist Security Info=False;";
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
             panel3.Visible = false;
             string HORAs = hoy.ToShortTimeString();
+            string hora;
+            string minutos;
+            if (HORAs[1]==':'){
+                hora = (HORAs[0].ToString());
+                minutos = (HORAs[2].ToString()) + (HORAs[3].ToString());
+            }
+            else
+            {
+                hora = (HORAs[0].ToString()) + (HORAs[1].ToString());
+                minutos = (HORAs[3].ToString()) + (HORAs[4].ToString());
+
+            }
             char[] HORAc = new char[HORAs.Length];
-            string hora = (HORAc[0].ToString()) + (HORAc[1].ToString());
-            string minutos = (HORAc[3].ToString()) + (HORAc[4].ToString());
             int h = Int32.Parse(hora);
             int m = Int32.Parse(minutos);
             this.arriendosTableAdapter.INICIAR_ARR(h, m, b);

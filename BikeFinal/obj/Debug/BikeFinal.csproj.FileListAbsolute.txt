@@ -42,3 +42,14 @@ C:\Users\felip\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.pdb
 C:\Users\felip\Source\Repos\Bike-Final\BikeFinal\bin\Debug\BikeFinal.exe.config
 C:\Users\felip\Source\Repos\Bike-Final\BikeFinal\bin\Debug\BikeFinal.exe
 C:\Users\felip\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.exe
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\bin\Debug\DB.accdb
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\bin\Debug\BikeFinal.exe.config
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\bin\Debug\BikeFinal.exe
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\bin\Debug\BikeFinal.pdb
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.csprojResolveAssemblyReference.cache
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.Form1.resources
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.Properties.Resources.resources
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.csproj.GenerateResource.cache
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.csproj.CoreCompileInputs.cache
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.exe
+C:\Users\Nicolas Windows 7\Source\Repos\Bike-Final\BikeFinal\obj\Debug\BikeFinal.pdb
