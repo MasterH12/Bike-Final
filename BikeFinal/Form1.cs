@@ -18,7 +18,7 @@ namespace BikeFinal
         public Form1()
         {
             //La siguiente linea de código tiene que ser modificada según la dirección del repositorio en el que estén (en cada computadora es diferente)
-            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Nicolas Windows 7\source\repos\Bike-Final\BikeFinal\bin\Debug\DB.accdb;
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\MasterH\source\repos\BikeControlFinal\BikeFinal\bin\Debug\DB.accdb;
 Persist Security Info=False;";
             InitializeComponent();
         }
@@ -86,6 +86,7 @@ Persist Security Info=False;";
             }
             catch (Exception ex)
             {
+                //PROBLEMA, AL INGRESAR ID 12, DICE QUE YA EXISTE LA ID
                 if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
                 {
                     MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -252,6 +253,28 @@ Persist Security Info=False;";
                 {
                     this.bicicletasTableAdapter.MODIFICAR(mARCATextBox1.Text, Int32.Parse(rODADOTextBox1.Text), Int32.Parse(tALLATextBox1.Text), Int32.Parse(vALORTextBox1.Text), Int32.Parse(comboBox1.Text));
                     this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                    comboBox1.Items.Clear();
+                    try
+                    {
+                        connection.Open();
+
+                        OleDbCommand command = new OleDbCommand();
+                        command.Connection = connection;
+                        string query = "select DISTINCT * from Bicicletas";
+                        command.CommandText = query;
+
+                        OleDbDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            comboBox1.Items.Add(reader["Id"].ToString());
+                        }
+                        connection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error " + ex);
+                    }
+                    iDTextBox1.Text = "";
                 }
             }
             catch (Exception ex)
@@ -375,6 +398,7 @@ Persist Security Info=False;";
             if (respuesta == DialogResult.Yes)
             {
                 this.bicicletasTableAdapter.ELIMINAR(Int32.Parse(comboBox1.Text));
+                this.arriendosTableAdapter.ELIMINAR(Int32.Parse(comboBox1.Text));
                 this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
             }
         }
