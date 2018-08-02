@@ -400,6 +400,32 @@ Persist Security Info=False;";
                 this.bicicletasTableAdapter.ELIMINAR(Int32.Parse(comboBox1.Text));
                 this.arriendosTableAdapter.ELIMINAR(Int32.Parse(comboBox1.Text));
                 this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                mARCATextBox1.Text = "";
+                rODADOTextBox1.Text = "";
+                tALLATextBox1.Text = "";
+                vALORTextBox1.Text = "";
+                comboBox1.Text = "";
+                comboBox1.Items.Clear();
+                try
+                {
+                    connection.Open();
+
+                    OleDbCommand command = new OleDbCommand();
+                    command.Connection = connection;
+                    string query = "select DISTINCT * from Bicicletas";
+                    command.CommandText = query;
+
+                    OleDbDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        comboBox1.Items.Add(reader["Id"].ToString());
+                    }
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex);
+                }
             }
         }
 
