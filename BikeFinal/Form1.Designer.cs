@@ -40,12 +40,12 @@
             System.Windows.Forms.Label tALLALabel1;
             System.Windows.Forms.Label vALORLabel1;
             System.Windows.Forms.Label iDLabel1;
-            System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label8;
+            System.Windows.Forms.Label label9;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bicicletasBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -73,11 +73,11 @@
             this.button6 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.arriendosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button7 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.iDTextBox1 = new System.Windows.Forms.TextBox();
+            this.arriendosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.arriendosTableAdapter = new BikeFinal.DBDataSetTableAdapters.ArriendosTableAdapter();
             this.bicicletasDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +95,12 @@
             this.button9 = new System.Windows.Forms.Button();
             this.ID_rep = new System.Windows.Forms.TextBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.button11 = new System.Windows.Forms.Button();
             iDLabel = new System.Windows.Forms.Label();
             mARCALabel = new System.Windows.Forms.Label();
             tALLALabel = new System.Windows.Forms.Label();
@@ -106,12 +112,12 @@
             tALLALabel1 = new System.Windows.Forms.Label();
             vALORLabel1 = new System.Windows.Forms.Label();
             iDLabel1 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBDataSet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -120,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.arriendosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasDataGridView)).BeginInit();
             this.REPARACION.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // iDLabel
@@ -217,20 +224,11 @@
             // iDLabel1
             // 
             iDLabel1.AutoSize = true;
-            iDLabel1.Location = new System.Drawing.Point(28, 20);
+            iDLabel1.Location = new System.Drawing.Point(34, 55);
             iDLabel1.Name = "iDLabel1";
             iDLabel1.Size = new System.Drawing.Size(21, 13);
             iDLabel1.TabIndex = 1;
             iDLabel1.Text = "ID:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(28, 44);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(46, 13);
-            label3.TabIndex = 4;
-            label3.Text = "Usuario:";
             // 
             // label5
             // 
@@ -277,6 +275,15 @@
             label8.Size = new System.Drawing.Size(97, 17);
             label8.TabIndex = 10;
             label8.Text = "REPARACIÓN";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(34, 58);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(21, 13);
+            label9.TabIndex = 2;
+            label9.Text = "ID:";
             // 
             // bicicletasBindingSource
             // 
@@ -504,59 +511,59 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(label3);
-            this.panel3.Controls.Add(this.button7);
+            this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(iDLabel1);
             this.panel3.Controls.Add(this.iDTextBox1);
             this.panel3.Controls.Add(this.listBox1);
-            this.panel3.Location = new System.Drawing.Point(245, 205);
+            this.panel3.Controls.Add(this.button7);
+            this.panel3.Location = new System.Drawing.Point(245, 196);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(387, 250);
             this.panel3.TabIndex = 7;
             this.panel3.Visible = false;
             // 
-            // textBox1
+            // label10
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.arriendosBindingSource, "ID", true));
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(31, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 20);
-            this.textBox1.TabIndex = 5;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(81, 14);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(181, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "INICIAR ARRIENDO DE BICICLETA";
+            // 
+            // iDTextBox1
+            // 
+            this.iDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.arriendosBindingSource, "ID", true));
+            this.iDTextBox1.Enabled = false;
+            this.iDTextBox1.Location = new System.Drawing.Point(61, 52);
+            this.iDTextBox1.Name = "iDTextBox1";
+            this.iDTextBox1.Size = new System.Drawing.Size(93, 20);
+            this.iDTextBox1.TabIndex = 2;
+            this.iDTextBox1.TextChanged += new System.EventHandler(this.iDTextBox1_TextChanged);
             // 
             // arriendosBindingSource
             // 
             this.arriendosBindingSource.DataMember = "Arriendos";
             this.arriendosBindingSource.DataSource = this.dBDataSet;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(180, 53);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(183, 186);
+            this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(55, 124);
+            this.button7.Location = new System.Drawing.Point(37, 86);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(99, 82);
+            this.button7.Size = new System.Drawing.Size(117, 82);
             this.button7.TabIndex = 3;
             this.button7.Text = "INICIAR ARRIENDO";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // iDTextBox1
-            // 
-            this.iDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.arriendosBindingSource, "ID", true));
-            this.iDTextBox1.Enabled = false;
-            this.iDTextBox1.Location = new System.Drawing.Point(55, 17);
-            this.iDTextBox1.Name = "iDTextBox1";
-            this.iDTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.iDTextBox1.TabIndex = 2;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(207, 20);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(152, 186);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // arriendosTableAdapter
             // 
@@ -645,7 +652,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(474, 43);
+            this.button8.Location = new System.Drawing.Point(627, 42);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(86, 23);
             this.button8.TabIndex = 9;
@@ -668,7 +675,7 @@
             this.REPARACION.Controls.Add(this.ID_rep);
             this.REPARACION.Controls.Add(this.listBox2);
             this.REPARACION.Cursor = System.Windows.Forms.Cursors.Default;
-            this.REPARACION.Location = new System.Drawing.Point(346, 85);
+            this.REPARACION.Location = new System.Drawing.Point(245, 181);
             this.REPARACION.Name = "REPARACION";
             this.REPARACION.Size = new System.Drawing.Size(362, 262);
             this.REPARACION.TabIndex = 10;
@@ -709,6 +716,7 @@
             this.button9.TabIndex = 3;
             this.button9.Text = "CAMBIAR A ESTADO DE REPARACIÓN";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // ID_rep
             // 
@@ -727,6 +735,66 @@
             this.listBox2.Size = new System.Drawing.Size(132, 199);
             this.listBox2.TabIndex = 0;
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(475, 43);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(146, 23);
+            this.button10.TabIndex = 11;
+            this.button10.Text = "TERMINAR ARRIENDO";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Controls.Add(this.listBox3);
+            this.panel4.Controls.Add(label9);
+            this.panel4.Controls.Add(this.button11);
+            this.panel4.Location = new System.Drawing.Point(638, 206);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(259, 249);
+            this.panel4.TabIndex = 12;
+            this.panel4.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(30, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(197, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "FINALIZAR ARRIENDO DE BICICLETA";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(61, 55);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(38, 20);
+            this.textBox2.TabIndex = 4;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(114, 32);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(126, 199);
+            this.listBox3.TabIndex = 3;
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(33, 88);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 57);
+            this.button11.TabIndex = 0;
+            this.button11.Text = "TERMINAR ARRIENDO";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -734,9 +802,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1001, 467);
-            this.Controls.Add(this.REPARACION);
-            this.Controls.Add(this.button8);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.REPARACION);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.bicicletasDataGridView);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.panel2);
@@ -759,6 +829,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasDataGridView)).EndInit();
             this.REPARACION.ResumeLayout(false);
             this.REPARACION.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -803,7 +875,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel REPARACION;
         private System.Windows.Forms.TextBox TALLA_rep;
@@ -812,6 +883,13 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox ID_rep;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label10;
     }
 }
 

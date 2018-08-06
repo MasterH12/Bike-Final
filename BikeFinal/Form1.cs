@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Drawing;
+using System.Windows.Forms;
 
 
 namespace BikeFinal
@@ -18,7 +12,7 @@ namespace BikeFinal
         public Form1()
         {
             //La siguiente linea de código tiene que ser modificada según la dirección del repositorio en el que estén (en cada computadora es diferente)
-            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\MasterH\source\repos\BikeControlFinal\BikeFinal\bin\Debug\DB.accdb;
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Nicolas Windows 7\source\repos\Bike-Final\BikeFinal\bin\Debug\DB.accdb;
 Persist Security Info=False;";
             InitializeComponent();
         }
@@ -34,7 +28,7 @@ Persist Security Info=False;";
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dBDataSet.Arriendos' Puede moverla o quitarla según sea necesario.
-            //this.arriendosTableAdapter.Fill(this.dBDataSet.Arriendos);
+            this.arriendosTableAdapter.Fill(this.dBDataSet.Arriendos);
             // TODO: esta línea de código carga datos en la tabla 'dBDataSet.Bicicletas' Puede moverla o quitarla según sea necesario.
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
 
@@ -47,6 +41,7 @@ Persist Security Info=False;";
                 panel1.Visible = true;
                 panel2.Visible = false;
                 panel3.Visible = false;
+                panel4.Visible = false;
                 REPARACION.Visible = false;
             }
             else
@@ -188,13 +183,8 @@ Persist Security Info=False;";
                     }
                     MessageBox.Show(mensaje, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
-
-
-
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             if (panel2.Visible == false)
@@ -224,6 +214,7 @@ Persist Security Info=False;";
                 panel2.Visible = true;
                 panel1.Visible = false;
                 panel3.Visible = false;
+                panel4.Visible = false;
                 REPARACION.Visible = false;
             }
             else
@@ -431,9 +422,12 @@ Persist Security Info=False;";
 
         private void button6_Click(object sender, EventArgs e)
         {
+            iDTextBox1.Clear();
             if (panel3.Visible == false)
             {
                 listBox1.Items.Clear();
+                iDTextBox1.Clear();
+
                 try
                 {
 
@@ -459,6 +453,7 @@ Persist Security Info=False;";
                 panel3.Visible = true;
                 panel2.Visible = false;
                 panel1.Visible = false;
+                panel4.Visible = false;
                 REPARACION.Visible = false;
             }
             else
@@ -519,13 +514,15 @@ Persist Security Info=False;";
 
         }
         //El evento siguiente controla lo que aparece en en el panel REPARACION
-        //Todavía no se actualiza el listado de bicicletas en la listbox
+        //Todavía no se actualiza el listado de bicicletas en la listbox (ahora si deberia (nicolas))
         private void button8_Click(object sender, EventArgs e)
+            //BOTON REPARACION en modo visible= false en propiedades(en la otra pestaña ->>>>>>)
         {
             if (REPARACION.Visible == false)
             {
                 listBox2.Items.Clear();
                 REPARACION.Visible = true;
+                panel4.Visible = false;
                 panel3.Visible = false;
                 panel2.Visible = false;
                 panel1.Visible = false;
@@ -574,7 +571,169 @@ Persist Security Info=False;";
             }
 
         }
-    }
+        //variables para guardar la hora y minutos del arriendo de tal ID
+        double minutosM;
+        double horasH;
+        double diferenciaM;
+        double diferenciaH;
+        double total;
+        //variable para guardar el valor de tal cleta
+        double valor;
 
+
+        //BOTON TERMINAR ARRIENDO (boton que esta dento del PANEL TERMINAR ARRIENDO)
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try//rescata la hora de inicio
+            {
+                connection.Open();
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                string query = "select * from Arriendos Where ID =" + textBox2.Text;
+                command.CommandText = query;
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    minutosM = Int32.Parse(reader["INICIO_MINUTO"].ToString());
+                    horasH = Int32.Parse(reader["INICIO_HORA"].ToString());
+                }
+                connection.Close();
+                ///////////////////////////////
+                //rescatamos el valor
+                connection.Open();
+                command = new OleDbCommand();
+                command.Connection = connection;
+                query = "select * from Bicicletas Where ID =" + textBox2.Text;
+                command.CommandText = query;
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    valor = Int32.Parse(reader["VALOR"].ToString());
+                   
+                }
+                connection.Close();
+
+                panel4.Visible = false;
+                string HORAs = hoy.ToShortTimeString();
+                string hora;
+                string minutos;
+                if(HORAs[1] == ':')
+                {
+                    hora = HORAs[0].ToString();
+                    minutos = HORAs[2].ToString() + HORAs[3].ToString();
+                }
+                else
+                {
+                    hora = HORAs[0].ToString()+HORAs[1].ToString();
+                    minutos = HORAs[3].ToString() + HORAs[4].ToString();
+
+                }
+                double h = Int32.Parse(hora);
+                double m = Int32.Parse(minutos);
+                diferenciaM = (m+(h*60)-(horasH*60)-minutosM);
+                total = valor * (diferenciaM / 60);
+                double horasTotales = diferenciaM / 60;
+
+                // aqui deberia actualizar el estado de arrendar de true a false
+                int b = Int32.Parse(textBox2.Text);
+                this.bicicletasTableAdapter.INICIAR_ARRIENDO(false, b);
+                this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                MessageBox.Show(
+                    "Formula = valor*(horasActuales-horasArriendo)"+
+                    "\n"+valor+" * ("+(h+(m/60))+" - "+(horasH+(minutosM/60))+" )"+
+                    "\n Horas Totales = "+horasTotales+"      Valor Total = "+total+" pesos"
+                    );
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex);
+            }
+
+        }
+
+        //BOTON TERMINAR  ARRIENDO (FORM1 osea es el boton que inicia el panel para terminar el arriendo )
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+            if (panel4.Visible == false)
+            {
+                textBox2.Clear();
+                listBox3.Items.Clear();
+                try
+                {
+                    connection.Open();
+
+                    OleDbCommand command = new OleDbCommand();
+                    command.Connection = connection;
+                    string query = "select DISTINCT * from Bicicletas where EN_ARRIENDO = true";
+                    command.CommandText = query;
+
+                    OleDbDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        listBox3.Items.Add(reader["ID"].ToString());
+                    }
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex);
+                }
+
+                panel4.Visible = true;
+                panel3.Visible = false;
+                panel2.Visible = false;
+                panel1.Visible = false;
+                REPARACION.Visible = false;
+            }
+            else
+            {
+                panel4.Visible = false;
+            }
+        }
+
+        //listbox3 que esta en el panel TERMINAR ARRIENDO
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                string query = "Select * from Bicicletas where ID =" + listBox3.Text;
+                command.CommandText = query;
+                OleDbDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    textBox2.Text = reader["Id"].ToString();
+                    
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+        }
+
+        private void iDTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
 
