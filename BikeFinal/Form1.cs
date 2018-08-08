@@ -497,9 +497,11 @@ Persist Security Info=False;";
             }
 
         }
+        //dataTime que me crea un  objeto hoy  que guarda la fehcha del reloj;
         DateTime hoy = DateTime.Now;
         private void button7_Click(object sender, EventArgs e)
         {
+            hoy = DateTime.Now;
             int b = Int32.Parse(iDTextBox1.Text);
             this.bicicletasTableAdapter.INICIAR_ARRIENDO(true, b);
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
@@ -601,8 +603,9 @@ Persist Security Info=False;";
         //BOTON TERMINAR ARRIENDO (boton que esta dento del PANEL TERMINAR ARRIENDO)
         private void button11_Click(object sender, EventArgs e)
         {
+            hoy = DateTime.Now;
             try//rescata la hora de inicio
-            {
+            {   
                 connection.Open();
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
@@ -645,18 +648,21 @@ Persist Security Info=False;";
                     minutos = HORAs[3].ToString() + HORAs[4].ToString();
 
                 }
+
+                // calula el precio final del arriendo
                 double h = Int32.Parse(hora);
                 double m = Int32.Parse(minutos);
                 diferenciaM = (m+(h*60)-(horasH*60)-minutosM);
                 total = valor * (diferenciaM / 60);
                 double horasTotales = diferenciaM / 60;
+
+                // consulta terminar arriendo para tal id extraida de la texBox2(boton que,
+                // se llama terminar arriendo).
                 this.bicicletasTableAdapter.TERMINAR_ARRIENDO(Int32.Parse(textBox2.Text));
                 this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
 
-                // aqui deberia actualizar el estado de arrendar de true a false
-                //int b = Int32.Parse(textBox2.Text);
-                //this.bicicletasTableAdapter.INICIAR_ARRIENDO(false, b);
-                //this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                // muestra en patalla un mensaje con los detalles de la función,
+                //implementada para calcular el valor del arriendo.
                 MessageBox.Show(
                     "Formula = (valor*minuto)*(minutosActuales-minutosArriendo)"+
                     "\n"+valor/60+" * ("+(int)(h*60+m)+" - "+(int)(horasH*60+(minutosM))+" )"+
