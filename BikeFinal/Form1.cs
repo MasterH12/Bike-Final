@@ -15,6 +15,9 @@ namespace BikeFinal
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Nicolas Windows 7\source\repos\Bike-Final\BikeFinal\bin\Debug\DB.accdb;
 Persist Security Info=False;";
             InitializeComponent();
+
+            //algo trucho
+            //iDTextBox1.Clear();
         }
 
         private void bicicletasBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -419,12 +422,12 @@ Persist Security Info=False;";
                 }
             }
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
-            iDTextBox1.Clear();
+            iDTextBox1.Text = "";
             if (panel3.Visible == false)
             {
+                
                 listBox1.Items.Clear();
                 iDTextBox1.Clear();
 
@@ -435,7 +438,7 @@ Persist Security Info=False;";
 
                     OleDbCommand command = new OleDbCommand();
                     command.Connection = connection;
-                    string query = "select DISTINCT * from Bicicletas WHERE EN_ARRIENDO = false";
+                    string query = "select DISTINCT * from Bicicletas WHERE EN_ARRIENDO = false AND EN_REPARACION = false";
                     command.CommandText = query;
 
                     OleDbDataReader reader = command.ExecuteReader();
@@ -457,7 +460,9 @@ Persist Security Info=False;";
                 REPARACION.Visible = false;
             }
             else
+
             {
+               // iDTextBox1.Text = "";
                 panel3.Visible = false;
             }
         }
@@ -471,18 +476,23 @@ Persist Security Info=False;";
 
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
-                string query = "select * from Bicicletas where ID =" + listBox1.Text;
-                command.CommandText = query;
+                if (listBox1.Text != "") { 
+                    string query = "select * from Bicicletas where ID =" + listBox1.Text;
+                    command.CommandText = query;
 
-                OleDbDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    iDTextBox1.Text = reader["ID"].ToString();
+                    OleDbDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                     iDTextBox1.Text = reader["ID"].ToString();
+                    }
+                   
                 }
                 connection.Close();
+
             }
             catch (Exception ex)
             {
+                connection.Close();
                 MessageBox.Show("Error " + ex);
             }
 
@@ -542,16 +552,22 @@ Persist Security Info=False;";
             {
                 DataGridViewRow row = bicicletasDataGridView.Rows[e.RowIndex];
                 DataGridViewCheckBoxCell cell = row.Cells["dataGridViewCheckBoxColumn2"] as DataGridViewCheckBoxCell;
+                string id = row.Cells[0].Value.ToString();
+                int ID = Int32.Parse(id);
                 if (Convert.ToBoolean(cell.Value) == false)
+
                 {
                     
-                    DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea marcar en Reparación?", "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea marcar en Reparación?, del ID = "+ID, "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                     if (respuesta == DialogResult.Yes)
                     {
+                        this.bicicletasTableAdapter.MODIFICAR_REPARACION(true,ID);
                         cell.Value = true;
                     }
                     else
                     {
+                        this.bicicletasTableAdapter.MODIFICAR_REPARACION(false,ID);
                         cell.Value = false;
                     }
                 }
@@ -560,6 +576,7 @@ Persist Security Info=False;";
                     DialogResult respuesta = MessageBox.Show("¿Ha sido reparada esta bicicleta?", "Problema!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                     if (respuesta == DialogResult.Yes)
                     {
+                        this.bicicletasTableAdapter.MODIFICAR_REPARACION(false, ID);
                         cell.Value = false;
                     }
                     else
@@ -633,15 +650,17 @@ Persist Security Info=False;";
                 diferenciaM = (m+(h*60)-(horasH*60)-minutosM);
                 total = valor * (diferenciaM / 60);
                 double horasTotales = diferenciaM / 60;
+                this.bicicletasTableAdapter.TERMINAR_ARRIENDO(Int32.Parse(textBox2.Text));
+                this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
 
                 // aqui deberia actualizar el estado de arrendar de true a false
-                int b = Int32.Parse(textBox2.Text);
-                this.bicicletasTableAdapter.INICIAR_ARRIENDO(false, b);
-                this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                //int b = Int32.Parse(textBox2.Text);
+                //this.bicicletasTableAdapter.INICIAR_ARRIENDO(false, b);
+                //this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
                 MessageBox.Show(
-                    "Formula = valor*(horasActuales-horasArriendo)"+
-                    "\n"+valor+" * ("+(h+(m/60))+" - "+(horasH+(minutosM/60))+" )"+
-                    "\n Horas Totales = "+horasTotales+"      Valor Total = "+total+" pesos"
+                    "Formula = (valor*minuto)*(minutosActuales-minutosArriendo)"+
+                    "\n"+valor/60+" * ("+(int)(h*60+m)+" - "+(int)(horasH*60+(minutosM))+" )"+
+                    "\n Minutos totales = "+horasTotales*60+"      Valor Total = "+total+" pesos"
                     );
 
 
@@ -704,19 +723,26 @@ Persist Security Info=False;";
                 
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
-                string query = "Select * from Bicicletas where ID =" + listBox3.Text;
-                command.CommandText = query;
-                OleDbDataReader reader = command.ExecuteReader();
-                while(reader.Read())
+                if (listBox3.Text !="")
                 {
-                    textBox2.Text = reader["Id"].ToString();
-                    
+                    string query = "Select * from Bicicletas where ID =" + listBox3.Text;
+                    command.CommandText = query;
+                    OleDbDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        textBox2.Text = reader["Id"].ToString();
+
+                    }
+
                 }
+               
                 connection.Close();
             }
             catch (Exception ex)
             {
+                connection.Close();
                 MessageBox.Show("Error" + ex);
+
             }
         }
 
