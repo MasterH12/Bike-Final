@@ -501,28 +501,33 @@ Persist Security Info=False;";
         DateTime hoy = DateTime.Now;
         private void button7_Click(object sender, EventArgs e)
         {
-            hoy = DateTime.Now;
-            int b = Int32.Parse(iDTextBox1.Text);
-            this.bicicletasTableAdapter.INICIAR_ARRIENDO(true, b);
-            this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
-            panel3.Visible = false;
-            string HORAs = hoy.ToShortTimeString();
-            string hora;
-            string minutos;
-            if (HORAs[1]==':'){
-                hora = (HORAs[0].ToString());
-                minutos = (HORAs[2].ToString()) + (HORAs[3].ToString());
-            }
-            else
+            if (iDTextBox1.Text != "")
             {
-                hora = (HORAs[0].ToString()) + (HORAs[1].ToString());
-                minutos = (HORAs[3].ToString()) + (HORAs[4].ToString());
+                hoy = DateTime.Now;
+                int b = Int32.Parse(iDTextBox1.Text);
+                this.bicicletasTableAdapter.INICIAR_ARRIENDO(true, b);
+                this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                panel3.Visible = false;
+                string HORAs = hoy.ToShortTimeString();
+                string hora;
+                string minutos;
+                if (HORAs[1] == ':')
+                {
+                    hora = (HORAs[0].ToString());
+                    minutos = (HORAs[2].ToString()) + (HORAs[3].ToString());
+                }
+                else
+                {
+                    hora = (HORAs[0].ToString()) + (HORAs[1].ToString());
+                    minutos = (HORAs[3].ToString()) + (HORAs[4].ToString());
 
+                }
+                char[] HORAc = new char[HORAs.Length];
+                int h = Int32.Parse(hora);
+                int m = Int32.Parse(minutos);
+                this.arriendosTableAdapter.INICIAR_ARR(h, m, b);
             }
-            char[] HORAc = new char[HORAs.Length];
-            int h = Int32.Parse(hora);
-            int m = Int32.Parse(minutos);
-            this.arriendosTableAdapter.INICIAR_ARR(h, m, b);
+            
 
         }
         //El evento siguiente controla lo que aparece en en el panel REPARACION
