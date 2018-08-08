@@ -8,16 +8,14 @@ namespace BikeFinal
 {
     public partial class Form1 : Form
     {
+        //variable connection tipo oleDbConnection, la cual permite hacer la coneccion con la base de datos
         OleDbConnection connection = new OleDbConnection();
         public Form1()
-        {
+        {   //connection.ConnectionString la cual es un string que almacena la ubicacion de la base de datos.
             //La siguiente linea de código tiene que ser modificada según la dirección del repositorio en el que estén (en cada computadora es diferente)
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Nicolas Windows 7\source\repos\Bike-Final\BikeFinal\bin\Debug\DB.accdb;
-Persist Security Info=False;";
+            Persist Security Info=False;";
             InitializeComponent();
-
-            //algo trucho
-            //iDTextBox1.Clear();
         }
 
         private void bicicletasBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -28,6 +26,7 @@ Persist Security Info=False;";
 
         }
 
+        //cuando se inicia el programa, al Form1 se le cargan los datos de arriendo y bicicletas correspondientes a la base de datos
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'dBDataSet.Arriendos' Puede moverla o quitarla según sea necesario.
@@ -36,11 +35,12 @@ Persist Security Info=False;";
             this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
 
         }
-
+        //boton "+", el cual permite iniciar el panel 1 que es para agregar una bicicleta a stock
         private void button2_Click(object sender, EventArgs e)
         {
             if (panel1.Visible == false)
             {
+                //si el panel que se desea abrir esta cerrado, lo abre y cierra todos los demas.
                 panel1.Visible = true;
                 panel2.Visible = false;
                 panel3.Visible = false;
@@ -49,9 +49,10 @@ Persist Security Info=False;";
             }
             else
             {
+                //caso contrario cierra el panel1
                 panel1.Visible = false;
             }
-
+            // para finalizar la accion setea los textBox en nulo
             mARCATextBox.Text = "";
             rODADOTextBox.Text = "";
             tALLATextBox.Text = "";
@@ -59,16 +60,24 @@ Persist Security Info=False;";
             iDTextBox.Text = "";
         }
 
+        //Boton agregar el cual esta en el panel que se despliega al precionar el boton "+", de agregar una nueva bicicleta a stock
         private void button1_Click(object sender, EventArgs e)
+
         {
+            //se creo una variable auxiliar booleana para poder setiar los textbox en null cuando se ingresa una bicicleta correctamente
+            bool aux = true;
+            //capturamos el evento cuando hacemos click sobre dicho boton
             try
             {
                 rODADOTextBox.ForeColor = Color.Black;
                 tALLATextBox.ForeColor = Color.Black;
                 vALORTextBox.ForeColor = Color.Black;
                 iDTextBox.ForeColor = Color.Black;
+
+ 
                 if (mARCATextBox.Text == "")
-                {
+                { 
+                    aux = false;
                     throw new ArgumentException("No se ha ingresado MARCA");
                 }
                 else
@@ -76,22 +85,28 @@ Persist Security Info=False;";
                     int a = Int32.Parse(iDTextBox.Text);
                     //Agregar arriendos está clausurado por ahora para evitar problemas de base de datos
                     this.arriendosTableAdapter.AGREGAR_ARR(a);
-
+                    
                     this.bicicletasTableAdapter.AGREGAR(mARCATextBox.Text, Int32.Parse(rODADOTextBox.Text), Int32.Parse(tALLATextBox.Text), Int32.Parse(vALORTextBox.Text), false, false, a);
                     this.bicicletasTableAdapter.Fill(this.dBDataSet.Bicicletas);
+                    aux = true;
 
                 }
             }
+
             catch (Exception ex)
             {
+                
                 //PROBLEMA, AL INGRESAR ID 12, DICE QUE YA EXISTE LA ID
                 if (ex.GetType().ToString() == "System.Data.OleDb.OleDbException")
                 {
                     MessageBox.Show("Ya existe un elemento con la ID ingresada, por favor introduzca una ID diferente", "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     iDTextBox.ForeColor = Color.Red;
+                    aux = false;
                 }
                 else
+
                 {
+                    aux = true;
                     //Se procede a buscar la información que se ingresó erroneamente
                     string[] frases = new string[5];
                     string frase = "";
@@ -121,6 +136,7 @@ Persist Security Info=False;";
                                 if (frase[i] < 48 || frase[i] > 57 && j != 1)
                                 {
                                     error = true;
+                                    aux = false;
                                     break;
                                 }
                             }
@@ -135,37 +151,46 @@ Persist Security Info=False;";
                                     mensaje = string.Concat(mensaje, "\t-ID ");
                                     if (causa == "nada")
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
                                     }
                                     else
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(Debe ser un número)");
                                     }
                                     break;
                                 case 1:
+                                    aux = false;
                                     mensaje = string.Concat(mensaje, "\t-MARCA (No ha ingresado nada)");
                                     break;
                                 case 2:
+                                    aux = false;
                                     rODADOTextBox.ForeColor = Color.Red;
                                     mensaje = string.Concat(mensaje, "\t-RODADO ");
                                     if (causa == "nada")
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
                                     }
                                     else
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(Debe ser un número)");
                                     }
                                     break;
                                 case 3:
+                                    aux = false;
                                     tALLATextBox.ForeColor = Color.Red;
                                     mensaje = string.Concat(mensaje, "\t-TALLA ");
                                     if (causa == "nada")
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
                                     }
                                     else
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(Debe ser un número)");
                                     }
                                     break;
@@ -174,19 +199,31 @@ Persist Security Info=False;";
                                     mensaje = string.Concat(mensaje, "\t-VALOR ");
                                     if (causa == "nada")
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(No ha ingresado nada)");
                                     }
                                     else
                                     {
+                                        aux = false;
                                         mensaje = string.Concat(mensaje, "(Debe ser un número)");
                                     }
                                     break;
                             }
                         }
                     }
+                    
                     MessageBox.Show(mensaje, "Problema!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
+            if (aux) {
+                mARCATextBox.Text = "";
+                rODADOTextBox.Text = "";
+                tALLATextBox.Text = "";
+                vALORTextBox.Text = "";
+                iDTextBox.Text = "";
+            }
+           
         }
         private void button3_Click(object sender, EventArgs e)
         {
