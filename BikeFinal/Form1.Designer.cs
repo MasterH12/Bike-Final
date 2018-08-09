@@ -516,7 +516,7 @@
             this.panel3.Controls.Add(this.iDTextBox1);
             this.panel3.Controls.Add(this.listBox1);
             this.panel3.Controls.Add(this.button7);
-            this.panel3.Location = new System.Drawing.Point(245, 196);
+            this.panel3.Location = new System.Drawing.Point(234, 301);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(387, 250);
             this.panel3.TabIndex = 7;
@@ -752,7 +752,7 @@
             this.panel4.Controls.Add(this.listBox3);
             this.panel4.Controls.Add(label9);
             this.panel4.Controls.Add(this.button11);
-            this.panel4.Location = new System.Drawing.Point(638, 206);
+            this.panel4.Location = new System.Drawing.Point(638, 300);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(259, 249);
             this.panel4.TabIndex = 12;
@@ -801,7 +801,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1001, 467);
+            this.ClientSize = new System.Drawing.Size(1001, 562);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.REPARACION);
             this.Controls.Add(this.panel4);
@@ -815,7 +815,7 @@
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Bike-Control";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bicicletasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBDataSet)).EndInit();
