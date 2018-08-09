@@ -708,7 +708,7 @@ namespace BikeFinal
                 MessageBox.Show(
                     "Formula = (valor*minuto)*(minutosActuales-minutosArriendo)"+
                     "\n"+valor/60+" * ("+(int)(h*60+m)+" - "+(int)(horasH*60+(minutosM))+" )"+
-                    "\n Minutos totales = "+horasTotales*60+"      Valor Total = "+total+" pesos"
+                    "\n Minutos totales = "+horasTotales*60+"      Valor Total = "+(int)total+" pesos"
                     );
 
 
